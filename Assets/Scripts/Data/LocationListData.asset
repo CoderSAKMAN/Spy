@@ -12,4 +12,132 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c494134f4023f743818e8c58c5e948f, type: 3}
   m_Name: LocationListData
   m_EditorClassIdentifier: 
-  locations: []
+  locations:
+  - name: Cami
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "An\u0131tkabir"
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "F\u0131r\u0131n"
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\xC7ocuk Park\u0131"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Hal\u0131 Saha"
+    photo: {fileID: 730382574, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "M\xFCze"
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Market
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Kebap\xE7\u0131"
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Gece Kul\xFCb\xFC"
+    photo: {fileID: 217956731, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\xD6\u011Frenci Yurdu"
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Millet Bah\xE7esi"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Sanayi
+    photo: {fileID: -299665537, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Oto Galeri
+    photo: {fileID: 730382574, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\xDCniversite Kamp\xFCs\xFC"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Panay\u0131r"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Lunapark
+    photo: {fileID: 1816402437, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Kilise
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Sahil
+    photo: {fileID: -299665537, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Pub
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Konser Alan\u0131"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Fabrika
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Banka
+    photo: {fileID: 343056649, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Times Meydan\u0131"
+    photo: {fileID: 343056649, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "M\u0131s\u0131r Piramitleri"
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\xC7in Seddi"
+    photo: {fileID: -299665537, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Spor Salonu
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Buz Pisti
+    photo: {fileID: -788774240, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Tren \u0130stasyonu"
+    photo: {fileID: 1816402437, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Otogar
+    photo: {fileID: -299665537, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Liman
+    photo: {fileID: 730382574, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Tuvalet
+    photo: {fileID: -788774240, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Berber
+    photo: {fileID: 217956731, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Sinema
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Antarktika
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Ter\xF6rist \xDCss\xFC"
+    photo: {fileID: 217956731, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Askeri K\u0131\u015Fla"
+    photo: {fileID: 217956731, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Havaalan\u0131"
+    photo: {fileID: -299665537, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Hastane
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Karakol
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Hapishane
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Mesire Alan\u0131"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Peri Bacalar\u0131"
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Kayak Merkezi
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Al\u0131\u015Fveri\u015F Merkezi"
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\xC7ay Oca\u011F\u0131"
+    photo: {fileID: -788774240, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Kan Ba\u011F\u0131\u015F \xC7ad\u0131r\u0131"
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Pet Shop
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\u0130nternet Kafe"
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "K\u0131r Bah\xE7esi"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Korku Evi
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\xC7iftlik"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Tobacco
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Tiyatro
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Basketbol Sahas\u0131"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Disneyland
+    photo: {fileID: 343056649, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "\xD6\u011Fretmenler Odas\u0131"
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Amfi
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Valilik
+    photo: {fileID: 18115661, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "K\xFClliye"
+    photo: {fileID: -1789030571, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "Mezarl\u0131k"
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: " Tramvay Dura\u011F\u0131"
+    photo: {fileID: 1816402437, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Zindan
+    photo: {fileID: -329773884, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: Ada
+    photo: {fileID: 570760112, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}
+  - name: "K\xF6y"
+    photo: {fileID: -788774240, guid: 9d5b5a34d67a1fb4fa7fa35de0892609, type: 3}

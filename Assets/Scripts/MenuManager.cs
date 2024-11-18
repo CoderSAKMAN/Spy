@@ -5,19 +5,22 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public SaveManager saveManager;
     public NotificationPanel notificationPanel;
 
     [Header("Person Settings")]
-    public Transform personListContainer;         // Kiþi Scroll View'in Content bölümü
-    public Button personButtonPrefab;             // Kiþi buton prefab'ý
+    public Transform personListContainer;  
+    public Button personButtonPrefab;        
+    public Button selectAllPersonsButton;
 
     [Header("Location Settings")]
-    public Transform locationListContainer;       // Mekan Scroll View'in Content bölümü
-    public Button locationButtonPrefab;           // Mekan buton prefab'ý
+    public Transform locationListContainer;      
+    public Button locationButtonPrefab;         
+    public Button selectAllLocationsButton;
 
     [Header("Global Lists")]
-    public PersonList personList; // ScriptableObject listesi
-    public LocationList locationList; // ScriptableObject listesi
+    public PersonList personList;
+    public LocationList locationList;
 
     [Header("Selected Lists")]
     public List<PersonData> selectedPersons = new List<PersonData>();
@@ -25,12 +28,35 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        SetLists();  // Baþlangýçta verileri yükle ve listeleri ayarla
+        SetLists();
+        
+        // Select All butonlarýný baðla
+        selectAllPersonsButton.onClick.AddListener(() =>
+        {
+            List<Button> personButtons = new List<Button>();
+            foreach (Transform child in personListContainer)
+            {
+                personButtons.Add(child.GetComponent<Button>());
+            }
+            SelectAllPersons(personButtons, personList.persons);
+        });
+
+        selectAllLocationsButton.onClick.AddListener(() =>
+        {
+            List<Button> locationButtons = new List<Button>();
+            foreach (Transform child in locationListContainer)
+            {
+                locationButtons.Add(child.GetComponent<Button>());
+            }
+            SelectAllLocations(locationButtons, locationList.locations);
+        });
     }
 
     public void SetLists()
     {
-        if (personList.persons.Count == 0 && locationList.locations.Count == 0) 
+        saveManager.LoadData();
+
+        if (personList.persons.Count == 0 || locationList.locations.Count == 0) 
         {
             gameObject.SetActive(false);
             notificationPanel.OpenPanel("Lütfen bir kiþi veya mekan ekleyin.", .6f);
@@ -38,10 +64,10 @@ public class MenuManager : MonoBehaviour
         else
         {
             ClearList(personListContainer);
-            PopulatePersonList(); // Kiþi listesini doldur
+            PopulatePersonList();
 
             ClearList(locationListContainer);
-            PopulateLocationList(); // Mekan listesini doldur
+            PopulateLocationList();
         }
     }
 
@@ -103,7 +129,7 @@ public class MenuManager : MonoBehaviour
         else
         {
             selectedLocations.Add(location);
-            button.image.color = Color.blue;
+            button.image.color = Color.green;
         }
     }
 
@@ -119,5 +145,25 @@ public class MenuManager : MonoBehaviour
         GameData.SelectedLocations = new List<LocationData>(selectedLocations);
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
+    public void SelectAllPersons(List<Button> personButtons, List<PersonData> allPersons)
+    {
+        selectedPersons.Clear();
+        foreach (var button in personButtons)
+        {
+            button.image.color = Color.green;
+        }
+        selectedPersons.AddRange(allPersons);
+    }
+
+    public void SelectAllLocations(List<Button> locationButtons, List<LocationData> allLocations)
+    {
+        selectedLocations.Clear();
+        foreach (var button in locationButtons)
+        {
+            button.image.color = Color.green;
+        }
+        selectedLocations.AddRange(allLocations);
     }
 }

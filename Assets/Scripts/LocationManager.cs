@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LocationManager : MonoBehaviour
 {
+    public SaveManager saveManager;
     public NotificationPanel notificationPanel;
     public LocationList locationList; // ScriptableObject listesi
     public TMP_InputField nameInput; // Ýsmi almak için InputField
@@ -27,6 +28,7 @@ public class LocationManager : MonoBehaviour
                 photo = selectedPhoto
             };
             locationList.locations.Add(newLocation);
+            saveManager.SaveData();
 
             nameInput.text = "";
             photoPreview.sprite = null;

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PersonManager : MonoBehaviour
 {
+    public SaveManager saveManager;
     public NotificationPanel notificationPanel;
     public PersonList personList; // ScriptableObject listesi
     public TMP_InputField nameInput; // Ýsmi almak için InputField
@@ -27,6 +28,7 @@ public class PersonManager : MonoBehaviour
                 photo = selectedPhoto
             };
             personList.persons.Add(newPerson);
+            saveManager.SaveData();
 
             nameInput.text = "";
             photoPreview.sprite = null;
