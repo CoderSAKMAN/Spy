@@ -11,8 +11,9 @@ User-Friendly UI: Built with Unity, providing a visually appealing and easy-to-u
 Multiplayer Mode: Enjoy a competitive game against a friend locally.
 Add Location: You can add spesific location where is that only your friends know.
 64 Locations that ready to play: If you don't want to add locations. The game gives you 64 classic locations.
+![WhatsApp Image 2024-11-18 at 13 01 22-4]([https://your-image-url.type](https://github.com/user-attachments/assets/6b944535-86a5-4f44-8e2b-530aa8823300)) with <img src="https://github.com/user-attachments/assets/6b944535-86a5-4f44-8e2b-530aa8823300" width="100" height="100">
 
-![WhatsApp Image 2024-11-18 at 13 01 22-4](https://github.com/user-attachments/assets/83e78123-6772-473d-ac89-04e1fdfc07c8)
+!(https://github.com/user-attachments/assets/83e78123-6772-473d-ac89-04e1fdfc07c8) 
 
 ![WhatsApp Image 2024-11-18 at 13 01 21](https://github.com/user-attachments/assets/6b944535-86a5-4f44-8e2b-530aa8823300)
 
