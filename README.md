@@ -11,12 +11,6 @@ User-Friendly UI: Built with Unity, providing a visually appealing and easy-to-u
 Multiplayer Mode: Enjoy a competitive game against a friend locally.
 Add Location: You can add spesific location where is that only your friends know.
 64 Locations that ready to play: If you don't want to add locations. The game gives you 64 classic locations.
-<img src="https://github.com/user-attachments/assets/83e78123-6772-473d-ac89-04e1fdfc07c8" width="300">
-<img src="https://github.com/user-attachments/assets/6b944535-86a5-4f44-8e2b-530aa8823300" width="300">
-
-
-!(https://github.com/user-attachments/assets/83e78123-6772-473d-ac89-04e1fdfc07c8) 
-
 
 
 # How to Play
@@ -27,11 +21,18 @@ Objective: The spy’s goal is to figure out the location without being discover
 Asking Questions: Players take turns asking each other questions about the location. Keep questions vague to avoid helping the spy.
 
 Detecting the Spy: Players analyze responses to guess who might be the spy.
-![WhatsApp Image 2024-11-18 at 13 01 22](https://github.com/user-attachments/assets/46d88e89-0ab1-4a29-847c-7f63a9602132)
 
-![WhatsApp Image 2024-11-18 at 13 01 22-2](https://github.com/user-attachments/assets/12c42499-2fee-4502-a4d1-3435df025b85)
+# Gameplay Preview
+<img src="https://github.com/user-attachments/assets/46d88e89-0ab1-4a29-847c-7f63a9602132" width="300">
 
-![WhatsApp Image 2024-11-18 at 13 01 22-3](https://github.com/user-attachments/assets/33a6b0eb-399e-454d-babe-2acd70e92c42)
+<img src="https://github.com/user-attachments/assets/12c42499-2fee-4502-a4d1-3435df025b85" width="300">
+
+<img src="https://github.com/user-attachments/assets/33a6b0eb-399e-454d-babe-2acd70e92c42" width="300">
+
+<img src="https://github.com/user-attachments/assets/83e78123-6772-473d-ac89-04e1fdfc07c8" width="250">
+
+<img src="https://github.com/user-attachments/assets/6b944535-86a5-4f44-8e2b-530aa8823300" width="250">
+
 
 
 
