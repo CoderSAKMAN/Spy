@@ -23,19 +23,19 @@ Asking Questions: Players take turns asking each other questions about the locat
 Detecting the Spy: Players analyze responses to guess who might be the spy.
 
 # Gameplay Preview
-<img src="https://github.com/user-attachments/assets/83e78123-6772-473d-ac89-04e1fdfc07c8" width="200">
+<img src="https://github.com/user-attachments/assets/83e78123-6772-473d-ac89-04e1fdfc07c8" width="240">
 
 
-<img src="https://github.com/user-attachments/assets/33a6b0eb-399e-454d-babe-2acd70e92c42" width="200">
+<img src="https://github.com/user-attachments/assets/33a6b0eb-399e-454d-babe-2acd70e92c42" width="240">
 
 
-<img src="https://github.com/user-attachments/assets/46d88e89-0ab1-4a29-847c-7f63a9602132" width="200">
+<img src="https://github.com/user-attachments/assets/46d88e89-0ab1-4a29-847c-7f63a9602132" width="240">
 
 
-<img src="https://github.com/user-attachments/assets/12c42499-2fee-4502-a4d1-3435df025b85" width="200">
+<img src="https://github.com/user-attachments/assets/12c42499-2fee-4502-a4d1-3435df025b85" width="240">
 
 
-<img src="https://github.com/user-attachments/assets/6b944535-86a5-4f44-8e2b-530aa8823300" width="200">
+<img src="https://github.com/user-attachments/assets/6b944535-86a5-4f44-8e2b-530aa8823300" width="240">
 
 
 
