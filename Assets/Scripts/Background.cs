@@ -1,21 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Background : MonoBehaviour
 {
-    [SerializeField] private float scrollSpeed = 0.5f;
+    public GameObject prefab;
+    public float spawnRate = 1.0f;
+    public float minHeight = -1.0f;
+    public float maxHeight = 1.0f;
 
-    private float offset;
-    private Material backgroundMaterial;
-
-    private void Start() 
+    private void OnEnable()
     {
-        backgroundMaterial= GetComponent<Renderer>().material;
+        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
-    private void FixedUpdate() 
+
+    private void OnDisable()
     {
-        offset += (scrollSpeed * Time.fixedDeltaTime) / 10f;
-        backgroundMaterial.SetTextureOffset("_MainTex", new Vector2(offset, 0));
-    } 
+        CancelInvoke(nameof(Spawn));
+    }
+
+    void Spawn()
+    {
+        GameObject pipes = Instantiate(prefab, transform.position, Quaternion.identity);
+        pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
+    }
+
+    /// <summary>
+    /// /////////////////////////////////////////////////////////////////////////////
+    /// </summary>
+
+    public float speed = 5f;
+    private float leftEdge;
+
+    void Start()
+    {
+        leftEdge = Camera.main.ScreenToWorldPoint(Vector3.zero).x - 1f;
+    }
+
+    private void Update()
+    {
+        transform.position += Vector3.left * speed * Time.deltaTime;
+
+        if (transform.position.x < leftEdge)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
+
+
+    

@@ -6,49 +6,54 @@ using Random = UnityEngine.Random;
 
 public class GameplayManager : MonoBehaviour
 {
+    public GameObject sayacPanel;
+    public TextMeshProUGUI sayacText;
+    public Button increaseTimeButton; // Süreyi artýrma butonu
     public GameObject warningtext;
-    public TextMeshProUGUI personNameText;    // Kiþi ismini gösterecek Text alaný
-    public Image personPhotoImage;            // Kiþi fotoðrafýný gösterecek Image alaný
-    public Button personPanel;                 // Bir sonraki kiþiye geçiþ butonu
-    public Button guessButton;                // TAHMÝN ET butonu
-    public Button giveUpButton;               // PES ET butonu
-    public GameObject guessPanel;             // Tahmin paneli, CASUS'u tahmin etmek için
-    public Transform guessListContainer;      // Tahmin panelindeki liste
-    public Button guessButtonPrefab;          // Tahmin için kiþi butonlarý
+    public TextMeshProUGUI personNameText;
+    public Image personPhotoImage;
+    public Button personPanel;
+    public Button guessButton;
+    public Button giveUpButton;
+    public GameObject guessPanel;
+    public Transform guessListContainer;
+    public Button guessButtonPrefab;
 
-    private List<PersonData> selectedPersons; // Seçili kiþiler listesi
-    private LocationData selectedLocation;    // Seçili mekan
-    private PersonData spy;                   // CASUS olarak seçilen kiþi
-    private int currentPersonIndex = 0;       // Þu anki kiþi sýrasý
-    private bool isRevealRoleOrLocation = false; // Kiþinin rolünün veya mekânýn gösterilip gösterilmediðini kontrol eder
+    private List<PersonData> selectedPersons;
+    private LocationData selectedLocation;
+    private PersonData spy;
+    private int currentPersonIndex = 0;
+    private bool isRevealRoleOrLocation = false;
+
+    private float remainingTime = 300f; // Baþlangýç süresi: 5 dakika
+    private bool isTimerRunning = false; // Sayaç durumu
 
     void Start()
     {
+        sayacPanel.SetActive(false);
         warningtext.SetActive(true);
         selectedPersons = GameData.SelectedPersons;
         var selectedLocations = GameData.SelectedLocations;
 
-        // CASUS'u ve MEKAN'ý rastgele seç
         spy = selectedPersons[Random.Range(0, selectedPersons.Count)];
         selectedLocation = selectedLocations[Random.Range(0, selectedLocations.Count)];
 
-        // Ýlk kiþiyi göster
         ShowPerson(currentPersonIndex);
 
-        // Tahmin ve pes et butonlarýný baþta gizle
         guessButton.gameObject.SetActive(false);
         giveUpButton.gameObject.SetActive(false);
+
+        // Süre artýrma butonuna iþlev ekle
+        increaseTimeButton.onClick.AddListener(AddOneMinute);
     }
 
     void ShowPerson(int index)
     {
-        // Gösterilecek kiþiyi al
         PersonData person = selectedPersons[index];
         personNameText.text = person.name;
         personPhotoImage.sprite = person.photo;
-        isRevealRoleOrLocation = false; // Baþlangýçta rol veya mekan gösterilmemiþ durumda
+        isRevealRoleOrLocation = false;
 
-        // Bir sonraki kiþiye geçmek için butona týklanýldýðýnda yapýlacaklar
         personPanel.onClick.RemoveAllListeners();
         personPanel.onClick.AddListener(() => OnNextPerson(person));
     }
@@ -58,7 +63,6 @@ public class GameplayManager : MonoBehaviour
         if (!isRevealRoleOrLocation)
         {
             warningtext.SetActive(false);
-            // Eðer ilk týklama ise, rol veya mekaný göster
             if (person == spy)
             {
                 personNameText.text = $"{person.name} - CASUS!";
@@ -67,12 +71,11 @@ public class GameplayManager : MonoBehaviour
             {
                 personNameText.text = $"{person.name} - MEKAN: {selectedLocation.name}";
             }
-            isRevealRoleOrLocation = true; // Ýlk týklamada rol veya mekan gösterildi
+            isRevealRoleOrLocation = true;
         }
         else
         {
             warningtext.SetActive(true);
-            // Eðer ikinci týklama ise, sýradaki kiþiye geç
             currentPersonIndex++;
             if (currentPersonIndex < selectedPersons.Count)
             {
@@ -80,30 +83,56 @@ public class GameplayManager : MonoBehaviour
             }
             else
             {
-                EndGame(); // Tüm kiþiler gösterildiyse oyunu bitir
+                EndGame();
             }
         }
     }
 
     void EndGame()
     {
-        // TAHMÝN ET ve PES ET butonlarýný göster
+        Sayac();
+
         personPanel.gameObject.SetActive(false);
         guessButton.gameObject.SetActive(true);
         giveUpButton.gameObject.SetActive(true);
 
-        // Tahmin et ve pes et butonlarýna iþlev ekle
         guessButton.onClick.AddListener(ShowGuessPanel);
         giveUpButton.onClick.AddListener(GiveUp);
     }
 
+    void Sayac()
+    {
+        sayacPanel.SetActive(true);
+        isTimerRunning = true;
+    }
+
+    void Update()
+    {
+        if (isTimerRunning && remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            int minutes = Mathf.FloorToInt(remainingTime / 60);
+            int seconds = Mathf.FloorToInt(remainingTime % 60);
+            sayacText.text = $"{minutes:D2}:{seconds:D2}";
+        }
+        else if (remainingTime <= 0 && isTimerRunning)
+        {
+            isTimerRunning = false;
+            sayacText.text = "00:00";
+            GiveUp();
+        }
+    }
+
+    void AddOneMinute()
+    {
+        remainingTime += 60f; // Süreyi 1 dakika artýr
+    }
+
     void ShowGuessPanel()
     {
-        // Tahmin panelini aktif hale getir
         guessPanel.SetActive(true);
         warningtext.SetActive(false);
 
-        // Tahmin panelindeki kiþileri listele
         foreach (var person in selectedPersons)
         {
             Button guessPersonButton = Instantiate(guessButtonPrefab, guessListContainer);
@@ -116,32 +145,29 @@ public class GameplayManager : MonoBehaviour
 
     void OnGuess(PersonData guessedPerson)
     {
-        // Tahmin edilen kiþi CASUS mu kontrol et
         if (guessedPerson == spy)
         {
+            personPhotoImage.sprite = spy.photo;
             personNameText.text = "Tebrikler! CASUS'u buldun!";
         }
         else
         {
+            personPhotoImage.sprite = spy.photo;
             personNameText.text = $"Yanlýþ tahmin! CASUS: {spy.name}";
         }
 
-        // Tahmin panelini ve butonlarý gizle
         guessPanel.SetActive(false);
         personPanel.gameObject.SetActive(true);
         guessButton.gameObject.SetActive(false);
         giveUpButton.gameObject.SetActive(false);
         personPanel.onClick.RemoveAllListeners();
         personPanel.onClick.AddListener(() => SceneChanger(0));
-
     }
 
     void GiveUp()
     {
-        // PES ET butonuna basýldýðýnda CASUS'u göster
         personNameText.text = $"CASUS: {spy.name}";
 
-        // Butonlarý gizle
         guessPanel.SetActive(false);
         personPanel.gameObject.SetActive(true);
         guessButton.gameObject.SetActive(false);

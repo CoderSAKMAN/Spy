@@ -1,11 +1,15 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
     public SaveManager saveManager;
+    public GameObject deletePanel;
     public NotificationPanel notificationPanel;
 
     [Header("Person Settings")]
@@ -75,27 +79,116 @@ public class MenuManager : MonoBehaviour
 
     private void PopulatePersonList()
     {
-        foreach (var person in personList.persons)
+        foreach (var person in personList.persons.ToList())
         {
             Button newPersonButton = Instantiate(personButtonPrefab, personListContainer);
             newPersonButton.GetComponentInChildren<TextMeshProUGUI>().text = person.name;
+
             Image childImage = newPersonButton.transform.GetChild(0).GetComponent<Image>();
             childImage.sprite = person.photo;
+
             newPersonButton.onClick.AddListener(() => OnPersonSelected(person, newPersonButton));
+
+            // Basýlý tutulma için Event Trigger ekleme
+            EventTrigger trigger = newPersonButton.gameObject.AddComponent<EventTrigger>();
+            AddLongPressListener(trigger, person, newPersonButton, true);
         }
     }
 
     private void PopulateLocationList()
     {
-        foreach (var location in locationList.locations)
+        foreach (var location in locationList.locations.ToList())
         {
             Button newLocationButton = Instantiate(locationButtonPrefab, locationListContainer);
             newLocationButton.GetComponentInChildren<TextMeshProUGUI>().text = location.name;
+
             Image childImage = newLocationButton.transform.GetChild(0).GetComponent<Image>();
             childImage.sprite = location.photo;
+
             newLocationButton.onClick.AddListener(() => OnLocationSelected(location, newLocationButton));
+
+            EventTrigger trigger = newLocationButton.gameObject.AddComponent<EventTrigger>();
+            AddLongPressListener(trigger, location, newLocationButton, false);
         }
     }
+
+    private void AddLongPressListener(EventTrigger trigger, object data, Button button, bool isPerson)
+    {
+        EventTrigger.Entry entryPointerDown = new EventTrigger.Entry { eventID = EventTriggerType.PointerDown };
+        EventTrigger.Entry entryPointerUp = new EventTrigger.Entry { eventID = EventTriggerType.PointerUp };
+
+        Coroutine longPressCoroutine = null;
+
+        entryPointerDown.callback.AddListener((eventData) =>
+        {
+            longPressCoroutine = StartCoroutine(LongPressRoutine(data, button, isPerson));
+        });
+
+        entryPointerUp.callback.AddListener((eventData) =>
+        {
+            if (longPressCoroutine != null)
+            {
+                StopCoroutine(longPressCoroutine);
+                longPressCoroutine = null;
+            }
+        });
+
+        trigger.triggers.Add(entryPointerDown);
+        trigger.triggers.Add(entryPointerUp);
+    }
+    private IEnumerator LongPressRoutine(object data, Button button, bool isPerson)
+    {
+        float pressTime = 0f;
+        float requiredPressTime = 2f;
+
+        while (pressTime < requiredPressTime)
+        {
+            pressTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // 2 saniye dolunca silme panelini aç
+        OpenDeletePanel(data, button, isPerson);
+    }
+
+    private void OpenDeletePanel(object data, Button button, bool isPerson)
+    {
+        deletePanel.SetActive(true);
+
+        Button confirmButton = deletePanel.transform.GetChild(0).GetComponent<Button>();
+        confirmButton.onClick.AddListener(() =>
+        {
+            if (isPerson)
+            {
+                RemovePerson(data as PersonData, button);
+            }
+            else
+            {
+                RemoveLocation(data as LocationData, button);
+            }
+            saveManager.SaveData();
+            deletePanel.SetActive(false);
+        });
+
+        Button cancelButton = deletePanel.transform.GetChild(1).GetComponent<Button>();
+        cancelButton.onClick.AddListener(() =>
+        {
+            deletePanel.SetActive(false);
+        });
+    }
+
+    private void RemovePerson(PersonData person, Button button)
+    {
+        personList.persons.Remove(person); // Listedeki kiþiyi kaldýr
+        Destroy(button.gameObject); // Ýlgili butonu kaldýr
+    }
+
+    private void RemoveLocation(LocationData location, Button button)
+    {
+        locationList.locations.Remove(location); // Listedeki mekaný kaldýr
+        Destroy(button.gameObject); // Ýlgili butonu kaldýr
+    }
+
 
     private void ClearList(Transform container)
     {

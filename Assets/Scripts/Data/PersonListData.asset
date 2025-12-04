@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edc283afb532b7478c319536946e4a9, type: 3}
   m_Name: PersonListData
   m_EditorClassIdentifier: 
-  persons: []
+  persons:
+  - name: aaaaaaaa
+    photo: {fileID: -36670055, guid: b52f2e030eb8bc44db6c9f3fe8727d5f, type: 3}
+  - name: sssssssss
+    photo: {fileID: 1175228215, guid: b52f2e030eb8bc44db6c9f3fe8727d5f, type: 3}
+  - name: dddddddddd
+    photo: {fileID: -244081027, guid: b52f2e030eb8bc44db6c9f3fe8727d5f, type: 3}
+  - name: aaaa
+    photo: {fileID: -1150334105, guid: b52f2e030eb8bc44db6c9f3fe8727d5f, type: 3}
+  - name: sss
+    photo: {fileID: -1150334105, guid: b52f2e030eb8bc44db6c9f3fe8727d5f, type: 3}
